@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Login | Sai Kumar Portfolio{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-box">
+        <h1 class="auth-title">Admin Login</h1>
+        <p class="auth-subtitle">
+            Secure access to dashboard & contact messages
+        </p>
+        
+        <form method="POST" class="auth-form">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input 
+                    type="text" 
+                    id="username" 
+                    name="username" 
+                    required 
+                    class="form-input"
+                    placeholder="Enter admin username">
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    required 
+                    class="form-input"
+                    placeholder="Enter secure password">
+            </div>
+            
+            <div class="form-group checkbox">
+                <input type="checkbox" id="remember" name="remember" class="form-checkbox">
+                <label for="remember">Remember me</label>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-full">
+                Login Securely
+            </button>
+        </form>
+        
+        <!-- OPTIONAL: Remove in production -->
+        <div class="auth-footer">
+            <p class="demo-info">
+                <strong>Demo Credentials (Testing Only)</strong><br>
+                Username: <code>admin</code><br>
+                Password: <code>password123</code>
+            </p>
+        </div>
+        
+        <p class="auth-link">
+            ← <a href="{{ url_for('index') }}">Back to Portfolio</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

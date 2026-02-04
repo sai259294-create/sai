@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+
+{% block title %}Services - My Portfolio{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="container">
+        <h1>Services</h1>
+        <p class="breadcrumb">Home > Services</p>
+    </div>
+</div>
+
+<section class="services-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>What I Offer</h2>
+            <p class="section-subtitle">Ethical cybersecurity and security testing services</p>
+        </div>
+        
+        <div class="services-grid">
+            {% for service in services %}
+            <div class="service-card">
+                <div class="service-icon">{{ service.icon }}</div>
+                <h3>{{ service.title }}</h3>
+                <p>{{ service.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="detailed-services">
+    <div class="container">
+        <!-- Web Security -->
+        <div class="service-detail-item">
+            <div class="service-detail-grid">
+                <div class="service-detail-text">
+                    <h2>Web Application Security Testing</h2>
+                    <p>I identify and report security vulnerabilities in web applications following 
+                    ethical hacking standards and OWASP guidelines.</p>
+                    
+                    <h4>What's Included:</h4>
+                    <ul class="service-list">
+                        <li>OWASP Top 10 vulnerability testing</li>
+                        <li>XSS & SQL Injection testing</li>
+                        <li>Authentication & session testing</li>
+                        <li>Security reporting & remediation guidance</li>
+                    </ul>
+                </div>
+                <div class="service-detail-image">
+                    <div class="placeholder-service">🛡️</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Network Security -->
+        <div class="service-detail-item">
+            <div class="service-detail-grid">
+                <div class="service-detail-image">
+                    <div class="placeholder-service">🌐</div>
+                </div>
+                <div class="service-detail-text">
+                    <h2>Network Security Assessment</h2>
+                    <p>Testing and analyzing network configurations to detect weak points 
+                    and misconfigurations.</p>
+                    
+                    <h4>What's Included:</h4>
+                    <ul class="service-list">
+                        <li>Port scanning & service enumeration</li>
+                        <li>Firewall & network misconfiguration checks</li>
+                        <li>Vulnerability scanning</li>
+                        <li>Security assessment reports</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Automation -->
+        <div class="service-detail-item">
+            <div class="service-detail-grid">
+                <div class="service-detail-text">
+                    <h2>Security Automation & Scripting</h2>
+                    <p>Developing scripts and tools to automate security testing 
+                    and system monitoring tasks.</p>
+                    
+                    <h4>What's Included:</h4>
+                    <ul class="service-list">
+                        <li>Bash scripting for security automation</li>
+                        <li>Python-based security tools</li>
+                        <li>Log analysis automation</li>
+                        <li>Custom security scripts</li>
+                    </ul>
+                </div>
+                <div class="service-detail-image">
+                    <div class="placeholder-service">⚙️</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Consulting -->
+        <div class="service-detail-item">
+            <div class="service-detail-grid">
+                <div class="service-detail-image">
+                    <div class="placeholder-service">📋</div>
+                </div>
+                <div class="service-detail-text">
+                    <h2>Cybersecurity Consulting</h2>
+                    <p>Guidance on improving application and system security 
+                    using industry best practices.</p>
+                    
+                    <h4>What's Included:</h4>
+                    <ul class="service-list">
+                        <li>Basic security audits</li>
+                        <li>Risk assessment</li>
+                        <li>Security best-practice recommendations</li>
+                        <li>Beginner security awareness support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <h2>Interested in Securing Your Systems?</h2>
+        <p>Let’s work together to identify and fix security vulnerabilities ethically.</p>
+        <a href="{{ url_for('contact') }}" class="btn btn-primary btn-large">Contact Me</a>
+    </div>
+</section>
+
+{% endblock %}

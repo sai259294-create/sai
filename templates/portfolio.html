@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block title %}Portfolio - Sai Kumar{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="container">
+        <h1>My Portfolio</h1>
+        <p class="breadcrumb">Home > Portfolio</p>
+    </div>
+</div>
+
+<section class="portfolio-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Security Projects</h2>
+            <p class="section-subtitle">Hands-on cybersecurity, automation, and ethical hacking work</p>
+        </div>
+        
+        <div class="filter-buttons">
+            <button class="filter-btn active" onclick="filterProjects('all')">All</button>
+            <button class="filter-btn" onclick="filterProjects('cybersecurity')">Cybersecurity</button>
+            <button class="filter-btn" onclick="filterProjects('python')">Python</button>
+            <button class="filter-btn" onclick="filterProjects('bash')">Bash</button>
+            <button class="filter-btn" onclick="filterProjects('web')">Web Security</button>
+        </div>
+        
+        <div class="projects-grid-full">
+            {% for project in projects %}
+            <div class="project-card-large" data-category="{{ project.category }}">
+                <div class="project-header">
+                    <div class="project-image-large">
+                        <div class="placeholder-image-large">{{ project.title[0] }}</div>
+                    </div>
+                    <div class="project-overlay">
+                        <a href="{{ url_for('project_detail', project_id=project.id) }}" class="btn btn-small">
+                            View Project
+                        </a>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>{{ project.title }}</h3>
+                    <p>{{ project.description }}</p>
+                    <div class="project-tech">
+                        {% for tech in project.technologies %}
+                        <span class="tech-badge">{{ tech }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="stats-section">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">Security Projects</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Labs & CTFs Solved</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">5+</div>
+                <div class="stat-label">Security Tools Used</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">OWASP</div>
+                <div class="stat-label">Top 10 Focus</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function filterProjects(category) {
+    const buttons = document.querySelectorAll('.filter-btn');
+    const projects = document.querySelectorAll('.project-card-large');
+    
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+    
+    projects.forEach(project => {
+        if (category === 'all') {
+            project.style.display = 'block';
+        } else {
+            project.style.display = project.dataset.category.includes(category) ? 'block' : 'none';
+        }
+    });
+}
+</script>
+{% endblock %}

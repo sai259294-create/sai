@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sai Kumar | Portfolio{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <a href="{{ url_for('index') }}" class="logo">Sai Kumar</a>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="{{ url_for('index') }}" class="nav-link">Home</a></li>
+                <li><a href="{{ url_for('about') }}" class="nav-link">About</a></li>
+                <li><a href="{{ url_for('portfolio') }}" class="nav-link">Portfolio</a></li>
+                <li><a href="{{ url_for('skills') }}" class="nav-link">Skills</a></li>
+                <li><a href="{{ url_for('services') }}" class="nav-link">Services</a></li>
+                <li><a href="{{ url_for('contact') }}" class="nav-link">Contact</a></li>
+                <li><a href="{{ url_for('resume') }}" class="nav-link">Resume</a></li>
+
+                {% if is_logged_in %}
+                    <li><a href="{{ url_for('dashboard') }}" class="nav-link">Dashboard</a></li>
+                    <li><a href="{{ url_for('logout') }}" class="nav-link logout-btn">
+                        Logout ({{ current_user }})
+                    </a></li>
+                
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                    <button onclick="this.parentElement.style.display='none';" class="close-btn">&times;</button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <!-- Main Content -->
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="{{ url_for('index') }}">Home</a></li>
+                        <li><a href="{{ url_for('portfolio') }}">Portfolio</a></li>
+                        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Follow Me</h3>
+                    <ul>
+                        <li>
+                            <a href="https://www.linkedin.com/in/sai-kumar-950b8a288/" target="_blank">
+                                LinkedIn
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/saikumar5403" target="_blank">
+                                GitHub
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p>Email: <a href="mailto:saiyadav5403@gmail.com">saiyadav5403@gmail.com</a></p>
+                    <p>Phone: <a href="tel:+917093805653">+91 7093805653</a></p>
+                    <p>Location: Hyderabad, Telangana, India</p>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Sai Kumar. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

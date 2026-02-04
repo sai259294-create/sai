@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Me - My Portfolio{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="container">
+        <h1>Contact Me</h1>
+        <p class="breadcrumb">Home > Contact</p>
+    </div>
+</div>
+
+<section class="contact-section">
+    <div class="container">
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h2>Get In Touch</h2>
+                <p>Have a project, security audit, or collaboration in mind? Feel free to reach out.</p>
+                
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <h3>📧 Email</h3>
+                        <p>
+                            <a href="mailto:saiyadav5403@gmail.com">
+                                saiyadav5403@gmail.com
+                            </a>
+                        </p>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <h3>📱 Phone</h3>
+                        <p>
+                            <a href="tel:+917093805653">
+                                +91 7093805653
+                            </a>
+                        </p>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <h3>📍 Location</h3>
+                        <p>Hyderabad, Telangana, India</p>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <h3>🔗 Follow Me</h3>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/sai-kumar-950b8a288/" target="_blank">
+                                LinkedIn
+                            </a>
+                            <a href="https://github.com/saikumar5403" target="_blank">
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form-wrapper">
+                <form method="POST" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required class="form-input">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required class="form-input">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone" class="form-input">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <input type="text" id="subject" name="subject" required class="form-input">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="6" required class="form-textarea"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

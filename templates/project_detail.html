@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block title %}{{ project.title }} - My Portfolio{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="container">
+        <h1>{{ project.title }}</h1>
+        <p class="breadcrumb">
+            <a href="{{ url_for('portfolio') }}">Portfolio</a> > {{ project.title }}
+        </p>
+    </div>
+</div>
+
+<section class="project-detail">
+    <div class="container">
+        <div class="project-detail-grid">
+            <div class="project-detail-main">
+                <div class="project-image-detail">
+                    <div class="placeholder-image-large">{{ project.title[0] }}</div>
+                </div>
+                
+                <div class="project-description">
+                    <h2>Project Overview</h2>
+                    <p>
+                        {{ project.description }}
+                    </p>
+
+                    <h3>Project Goals</h3>
+                    <ul>
+                        <li>Improve system and network security awareness</li>
+                        <li>Automate security-related tasks using scripting</li>
+                        <li>Identify vulnerabilities in a controlled environment</li>
+                        <li>Follow ethical hacking and responsible disclosure practices</li>
+                    </ul>
+
+                    <h3>Challenges & Solutions</h3>
+                    <p>
+                        One of the major challenges was safely testing vulnerabilities without
+                        affecting live systems. This was addressed by using local labs,
+                        virtual machines, and authorized testing environments. Automation
+                        scripts were optimized to reduce false positives and improve accuracy.
+                    </p>
+
+                    <h3>Results</h3>
+                    <p>
+                        The project successfully demonstrated real-world security concepts such
+                        as XSS, network scanning, and system hardening. It improved practical
+                        understanding of cybersecurity tools and strengthened hands-on
+                        penetration testing skills.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="project-detail-sidebar">
+                <div class="info-box">
+                    <h3>Technologies Used</h3>
+                    <div class="tech-list">
+                        {% for tech in project.technologies %}
+                        <span class="tech-badge-large">{{ tech }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                <div class="info-box">
+                    <h3>Project Details</h3>
+                    <ul class="details-list">
+                        <li><strong>Type:</strong> Cybersecurity / Ethical Hacking</li>
+                        <li><strong>Timeline:</strong> Academic Project</li>
+                        <li><strong>Environment:</strong> Kali Linux, Virtual Machines</li>
+                        <li><strong>Status:</strong> Completed</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h3>Learning Outcome</h3>
+                    <blockquote>
+                        “This project strengthened my understanding of vulnerability assessment,
+                        automation, and ethical hacking methodologies.”
+                    </blockquote>
+                    <p class="quote-author">- Sai Kumar Bontha</p>
+                </div>
+                
+                <div class="project-actions">
+                    <a href="https://github.com/saikumar5403" class="btn btn-primary" target="_blank">
+                        View Source Code
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="related-projects">
+    <div class="container">
+        <h2 class="section-title">Other Projects</h2>
+        <div class="text-center">
+            <a href="{{ url_for('portfolio') }}" class="btn btn-primary">View All Projects</a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

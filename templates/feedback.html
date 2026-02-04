@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block title %}Feedback - My Portfolio{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="container">
+        <h1>Feedback & Testimonials</h1>
+        <p class="breadcrumb">Home > Feedback</p>
+    </div>
+</div>
+
+<section class="feedback-section">
+    <div class="container">
+        <div class="feedback-grid">
+            <div class="feedback-form-wrapper">
+                <h2>Share Your Feedback</h2>
+                <p>
+                    I value constructive feedback from mentors, faculty, peers, and cybersecurity professionals.
+                    Your suggestions help me grow as a security researcher.
+                </p>
+                
+                <form method="POST" enctype="multipart/form-data" class="feedback-form">
+                    <div class="form-group">
+                        <label for="feedback">Your Feedback *</label>
+                        <textarea id="feedback" name="feedback" rows="6" required 
+                                  class="form-textarea" 
+                                  placeholder="Share your feedback about my projects, skills, or security work..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="rating">Rating</label>
+                        <select id="rating" name="rating" class="form-select">
+                            <option value="">Select a rating</option>
+                            <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+                            <option value="4">⭐⭐⭐⭐ Very Good</option>
+                            <option value="3">⭐⭐⭐ Good</option>
+                            <option value="2">⭐⭐ Fair</option>
+                            <option value="1">⭐ Needs Improvement</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="attachment">Attachment (Optional)</label>
+                        <input type="file" id="attachment" name="attachment" class="form-input"
+                               accept=".pdf,.txt,.doc,.docx,.png,.jpg,.jpeg">
+                        <small>Max file size: 16MB</small>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-full">
+                        Submit Feedback
+                    </button>
+                </form>
+            </div>
+            
+            <div class="testimonials-wrapper">
+                <h2>Mentor & Peer Testimonials</h2>
+                <p>Feedback from mentors, faculty members, and cybersecurity professionals.</p>
+                
+                <div class="testimonials-list">
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">
+                            "Sai Kumar demonstrates strong fundamentals in cybersecurity and shows great
+                            curiosity in learning real-world vulnerabilities like XSS and web security."
+                        </p>
+                        <p class="testimonial-author">
+                            - Faculty Mentor, Information Technology
+                        </p>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">
+                            "His hands-on bug bounty practice and automation scripts reflect a practical
+                            approach toward ethical hacking and security testing."
+                        </p>
+                        <p class="testimonial-author">
+                            - Cybersecurity Community Member
+                        </p>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">
+                            "Quick learner with strong dedication to improving his skills in penetration
+                            testing, Bash scripting, and vulnerability analysis."
+                        </p>
+                        <p class="testimonial-author">
+                            - Peer Reviewer
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

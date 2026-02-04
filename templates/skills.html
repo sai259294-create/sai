@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block title %}Skills - My Portfolio{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="container">
+        <h1>My Skills</h1>
+        <p class="breadcrumb">Home > Skills</p>
+    </div>
+</div>
+
+<section class="skills-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Technical Expertise</h2>
+            <p class="section-subtitle">Cybersecurity, development, and automation skills</p>
+        </div>
+        
+        <div class="skills-grid-detailed">
+            {% for category, skill_list in skills.items() %}
+            <div class="skill-category-card">
+                <h3 class="category-title">{{ category }}</h3>
+                <div class="skill-items-grid">
+                    {% for skill in skill_list %}
+                    <div class="skill-item-detailed">
+                        <div class="skill-icon">⭐</div>
+                        <p>{{ skill }}</p>
+                        <div class="skill-progress">
+                            <div class="progress-bar" style="width: {{ 70 + loop.index * 5 }}%"></div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="proficiency-section">
+    <div class="container">
+        <h2 class="section-title">Proficiency Levels</h2>
+        
+        <div class="proficiency-grid">
+            <div class="proficiency-card">
+                <h3>Strong</h3>
+                <ul class="proficiency-list">
+                    <li>Web Application Security (OWASP Top 10)</li>
+                    <li>Vulnerability Assessment & Penetration Testing</li>
+                    <li>Linux (Kali, Ubuntu)</li>
+                    <li>Networking Basics (TCP/IP, DNS, HTTP)</li>
+                </ul>
+            </div>
+            
+            <div class="proficiency-card">
+                <h3>Intermediate</h3>
+                <ul class="proficiency-list">
+                    <li>Bash Scripting & Automation</li>
+                    <li>Python for Security Tools</li>
+                    <li>Burp Suite & OWASP ZAP</li>
+                    <li>Nmap, Nikto, Wireshark</li>
+                </ul>
+            </div>
+            
+            <div class="proficiency-card">
+                <h3>Fundamental</h3>
+                <ul class="proficiency-list">
+                    <li>Core Java</li>
+                    <li>HTML, CSS, JavaScript</li>
+                    <li>SQL & Database Basics</li>
+                    <li>Windows Security Configuration</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="certifications-section">
+    <div class="container">
+        <h2 class="section-title">Certifications</h2>
+        
+        <div class="certifications-grid">
+            <div class="certification-card">
+                <h3>White-Hat Ethical Hacking</h3>
+                <p><strong>Pirple</strong></p>
+                <p class="cert-date">Issued: Aug 2025</p>
+            </div>
+            
+            <div class="certification-card">
+                <h3>Web Application Penetration Testing</h3>
+                <p><strong>Udemy</strong></p>
+            </div>
+            
+            <div class="certification-card">
+                <h3>Python for Cybersecurity Automation</h3>
+                <p><strong>FreeCodeCamp / Udemy</strong></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="tools-section">
+    <div class="container">
+        <h2 class="section-title">Tools & Platforms</h2>
+        
+        <div class="tools-grid">
+            <div class="tool-item">
+                <h4>Security Tools</h4>
+                <p>Burp Suite, OWASP ZAP, Metasploit, Nmap, Hydra, Nikto</p>
+            </div>
+            <div class="tool-item">
+                <h4>Operating Systems</h4>
+                <p>Kali Linux, Parrot OS, Ubuntu, Windows</p>
+            </div>
+            <div class="tool-item">
+                <h4>Scripting & Programming</h4>
+                <p>Bash, Python, Core Java</p>
+            </div>
+            <div class="tool-item">
+                <h4>Web Technologies</h4>
+                <p>HTML, CSS, JavaScript</p>
+            </div>
+            <div class="tool-item">
+                <h4>Networking</h4>
+                <p>TCP/IP, DNS, HTTP/HTTPS, VPNs, Firewalls</p>
+            </div>
+            <div class="tool-item">
+                <h4>Virtualization</h4>
+                <p>VirtualBox</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

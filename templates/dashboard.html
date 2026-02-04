@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - My Portfolio{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="container">
+        <h1>Security Dashboard</h1>
+<p class="breadcrumb">Welcome, {{ user }} (Admin)</p>
+
+    </div>
+</div>
+
+<section class="dashboard-section">
+    <div class="container">
+        <div class="dashboard-grid">
+            <!-- Stats -->
+            <div class="dashboard-card stats-card">
+                <h3>Website & Security Statistics</h3>
+                
+
+
+                <div class="stats-content">
+                    <div class="stat-item">
+                        <span class="stat-label">Total Visits:</span>
+                        <span class="stat-value">{{ visits }}</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Messages Received:</span>
+                        <span class="stat-value">{{ contacts|length }}</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Messages -->
+            <div class="dashboard-card full-width">
+                <h3>Recent Contact & Security Messages</h3>
+                {% if contacts %}
+                <div class="messages-list">
+                    {% for contact in contacts|reverse|list[:5] %}
+                    <div class="message-item">
+                        <div class="message-header">
+                            <strong>{{ contact.name }}</strong>
+                            <span class="message-time">{{ contact.timestamp }}</span>
+                        </div>
+                        <div class="message-details">
+                            <p><strong>Email:</strong> {{ contact.email }}</p>
+                            <p><strong>Phone:</strong> {{ contact.phone or 'Not provided' }}</p>
+                            <p><strong>Subject:</strong> {{ contact.subject }}</p>
+                        </div>
+                        <div class="message-content">
+                            <p>{{ contact.message }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="no-data">No reports or messages received yet.</p>
+
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="dashboard-actions">
+            <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+            <a href="{{ url_for('index') }}" class="btn btn-secondary">Back to Home</a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

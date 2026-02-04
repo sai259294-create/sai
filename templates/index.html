@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Sai Kumar Portfolio{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title">Hi, I'm Sai Kumar Bontha</h1>
+            <p class="hero-subtitle">
+                Cybersecurity Enthusiast | Ethical Hacker | Bug Bounty Learner
+            </p>
+            <div class="hero-buttons">
+                <a href="{{ url_for('portfolio') }}" class="btn btn-primary">View My Projects</a>
+                <a href="{{ url_for('contact') }}" class="btn btn-secondary">Contact Me</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="about-preview">
+    <div class="container">
+        <div class="section-title">
+            <h2>About Me</h2>
+            <p class="section-subtitle">A quick introduction</p>
+        </div>
+        <div class="about-content">
+            <p>
+                I am a B.Tech Information Technology student with a strong interest in
+                Cybersecurity, Ethical Hacking, and Bug Bounty. I actively practice
+                web application security testing, vulnerability assessment, and
+                automation using Bash and Python.
+            </p>
+            <a href="{{ url_for('about') }}" class="link">Read more about me →</a>
+        </div>
+    </div>
+</section>
+
+<section class="featured-projects">
+    <div class="container">
+        <div class="section-title">
+            <h2>Featured Projects</h2>
+            <p class="section-subtitle">Hands-on cybersecurity & automation projects</p>
+        </div>
+
+        <div class="projects-grid">
+            {% for project in projects %}
+            <div class="project-card">
+                <div class="project-image">
+                    <div class="placeholder-image">{{ project.title[0] }}</div>
+                </div>
+                <div class="project-content">
+                    <h3>{{ project.title }}</h3>
+                    <p>{{ project.description }}</p>
+                    <div class="project-tech">
+                        {% for tech in project.technologies %}
+                        <span class="tech-badge">{{ tech }}</span>
+                        {% endfor %}
+                    </div>
+                    <a href="{{ url_for('project_detail', project_id=project.id) }}" class="btn btn-small">
+                        View Details
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="text-center">
+            <a href="{{ url_for('portfolio') }}" class="btn btn-primary">View All Projects</a>
+        </div>
+    </div>
+</section>
+
+<section class="skills-preview">
+    <div class="container">
+        <div class="section-title">
+            <h2>My Skills</h2>
+            <p class="section-subtitle">Cybersecurity & development skills</p>
+        </div>
+
+        <div class="skills-grid">
+            {% for category, skill_list in skills.items() %}
+            <div class="skill-category">
+                <h3>{{ category }}</h3>
+                <ul class="skill-list">
+                    {% for skill in skill_list %}
+                    <li class="skill-item">{{ skill }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="text-center">
+            <a href="{{ url_for('skills') }}" class="btn btn-secondary">View All Skills</a>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Interested in Cybersecurity Collaboration?</h2>
+            <p>
+                I’m open to internships, bug bounty learning, and security research opportunities.
+            </p>
+            <a href="{{ url_for('contact') }}" class="btn btn-primary">Get In Touch</a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
